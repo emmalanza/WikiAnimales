@@ -2,6 +2,7 @@ package com.example.wikianimales;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -46,8 +47,11 @@ public class MainActivity extends AppCompatActivity {
             @Override //sobreescribimos la funcion
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                Toast.makeText(MainActivity.this, animales.get(position).getDescripcion(), Toast.LENGTH_LONG).show();
-
+                Intent i = new Intent(MainActivity.this, DescripcionAnimal.class);
+                i.putExtra("id_img", animales.get(position).getAnimal());
+                i.putExtra("nombre", animales.get(position).getNombre());
+                i.putExtra("desc", animales.get(position).getDescripcion());
+                startActivity(i);
             }
         });
 
